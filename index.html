@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Travel AI — Your Smart Travel Assistant</title>
+  <link rel="stylesheet" href="styles.css" />
+  <!-- Google Fonts: Inter for UI, Sora for the brand name -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Sora:wght@600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- ── App Shell ─────────────────────────────────────────── -->
+  <div class="app">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <span class="brand-globe">🌍</span>
+        <span class="brand-name">Travel AI</span>
+      </div>
+
+      <button class="new-chat-btn" id="newChatBtn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        New conversation
+      </button>
+
+      <!-- Suggested starters shown in sidebar -->
+      <div class="sidebar-section-label">Quick questions</div>
+      <ul class="starter-list" id="starterList">
+        <li class="starter-item" data-prompt="Best places to visit in Europe on a budget?">🏛️ Budget Europe trip</li>
+        <li class="starter-item" data-prompt="What documents do I need for a US visa?">📋 US visa requirements</li>
+        <li class="starter-item" data-prompt="Top 5 safest countries for solo travel?">🎒 Solo travel safety</li>
+        <li class="starter-item" data-prompt="What's the best time of year to visit Japan?">🗾 Japan travel timing</li>
+        <li class="starter-item" data-prompt="How do I find cheap flights and hotels?">✈️ Flight & hotel deals</li>
+      </ul>
+
+      <div class="sidebar-footer">
+        <p>Powered by <strong>OpenRouter</strong></p>
+      </div>
+    </aside>
+
+    <!-- Main panel -->
+    <main class="main">
+
+      <!-- Header (mobile only — desktop brand is in sidebar) -->
+      <header class="topbar">
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+        <span class="topbar-title">🌍 Travel AI</span>
+        <button class="topbar-new" id="topbarNew" aria-label="New chat">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+      </header>
+
+      <!-- Chat messages area -->
+      <div class="chat-window" id="chatWindow">
+
+        <!-- Empty state (shown when no messages) -->
+        <div class="empty-state" id="emptyState">
+          <div class="empty-globe">🌍</div>
+          <h1 class="empty-title">Where to next?</h1>
+          <p class="empty-sub">Ask me anything about travel — destinations, visas, budgets, hotels, safety, and more.</p>
+          <div class="empty-chips">
+            <button class="chip" data-prompt="Plan a 7-day trip to Italy for two people.">🍕 Italy in 7 days</button>
+            <button class="chip" data-prompt="What are the cheapest destinations in Southeast Asia?">🛺 Cheap SE Asia spots</button>
+            <button class="chip" data-prompt="Give me packing tips for a two-week backpacking trip.">🎒 Packing tips</button>
+            <button class="chip" data-prompt="Which tropical islands are easiest to visit visa-free?">🏝️ Visa-free islands</button>
+          </div>
+        </div>
+
+        <!-- Messages injected here by script.js -->
+        <div class="messages" id="messages"></div>
+
+      </div>
+
+      <!-- Input bar -->
+      <div class="input-bar">
+        <div class="input-wrap">
+          <textarea
+            id="userInput"
+            class="user-input"
+            placeholder="Ask about destinations, hotels, visas…"
+            rows="1"
+            autocomplete="off"
+            spellcheck="true"
+          ></textarea>
+          <button class="send-btn" id="sendBtn" aria-label="Send message" disabled>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          </button>
+        </div>
+        <p class="input-disclaimer">Travel AI can make mistakes. Verify important info before you book.</p>
+      </div>
+
+    </main>
+  </div>
+
+  <!-- Sidebar overlay (mobile) -->
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
